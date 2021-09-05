@@ -93,7 +93,6 @@ void function Sh_CustomTDM_Init()
 
 	case "mp_rr_canyonlands_mu1":
 	case "mp_rr_canyonlands_mu1_night":
-    
     case "mp_rr_canyonlands_64k_x_64k":
         Shared_RegisterLocation(
             NewLocationSettings(

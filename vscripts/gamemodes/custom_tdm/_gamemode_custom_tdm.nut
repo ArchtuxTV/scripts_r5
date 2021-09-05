@@ -4,8 +4,8 @@ global function _RegisterLocation
 
 enum eTDMState
 {
-    IN_PROGRESS = 0
-    WINNER_DECIDED = 1
+	IN_PROGRESS = 0
+	WINNER_DECIDED = 1
 }
 
 struct {
@@ -28,17 +28,12 @@ void function _CustomTDM_Init()
     AddCallback_OnClientConnected( void function(entity player) { thread _OnPlayerConnected(player) } )
     AddCallback_OnPlayerKilled(void function(entity victim, entity attacker, var damageInfo) {thread _OnPlayerDied(victim, attacker, damageInfo)})
 
-
-    if (GetCurrentPlaylistVarBool("team_deathmatch", true))
+    AddClientCommandCallback("next_round", ClientCommand_NextRound)
+    if( CMD_GetTGiveEnabled() )
     {
-        // AddClientCommandCallback("next_round", ClientCommand_NextRound) // I PREFER TO DISABLE THIS TO PREVENT PLAYERS FROM SPAMMING NEXT ROUND
-        if( CMD_GetTGiveEnabled() )
-        {
-            AddClientCommandCallback("tgive", ClientCommand_GiveWeapon)
-        }
+        AddClientCommandCallback("tgive", ClientCommand_GiveWeapon)
     }
-
-
+    
     thread RunTDM()
 
     // Whitelisted weapons
@@ -117,7 +112,7 @@ void function VotingPhase()
         if(!IsValid(player)) continue;
         _HandleRespawn(player)
         MakeInvincible(player)
-        HolsterAndDisableWeapons( player )
+		HolsterAndDisableWeapons( player )
         player.ForceStand()
         Remote_CallFunction_NonReplay(player, "ServerCallback_TDM_DoAnnouncement", 2, eTDMAnnounce.VOTING_PHASE)
         TpPlayerToSpawnPoint(player)
@@ -194,11 +189,11 @@ void function StartRound()
     }
     float endTime = Time() + GetCurrentPlaylistVarFloat("round_time", 480)
     while( Time() <= endTime )
-    {
+	{
         if(file.tdmState == eTDMState.WINNER_DECIDED)
             break
-        WaitFrame()
-    }
+		WaitFrame()
+	}
     file.tdmState = eTDMState.IN_PROGRESS
 
     file.bubbleBoundary.Destroy()
@@ -479,7 +474,7 @@ entity function CreateBubbleBoundary(LocationSettings location)
     bubbleRadius += GetCurrentPlaylistVarFloat("bubble_radius_padding", 800)
 
     entity bubbleShield = CreateEntity( "prop_dynamic" )
-    bubbleShield.SetValueForModelKey( BUBBLE_BUNKER_SHIELD_COLLISION_MODEL )
+	bubbleShield.SetValueForModelKey( BUBBLE_BUNKER_SHIELD_COLLISION_MODEL )
     bubbleShield.SetOrigin(bubbleCenter)
     bubbleShield.SetModelScale(bubbleRadius / 235)
     bubbleShield.kv.CollisionGroup = 0
@@ -506,7 +501,7 @@ void function MonitorBubbleBoundary(entity bubbleShield, vector bubbleCenter, fl
             if(!IsValid(player)) continue
             if(Distance(player.GetOrigin(), bubbleCenter) > bubbleRadius)
             {
-                Remote_CallFunction_Replay( player, "ServerCallback_PlayerTookDamage", 0, 0, 0, 0, DF_BYPASS_SHIELD | DF_DOOMED_HEALTH_LOSS, eDamageSourceId.deathField, null )
+				Remote_CallFunction_Replay( player, "ServerCallback_PlayerTookDamage", 0, 0, 0, 0, DF_BYPASS_SHIELD | DF_DOOMED_HEALTH_LOSS, eDamageSourceId.deathField, null )
                 player.TakeDamage( int( Deathmatch_GetOOBDamagePercent() / 100 * float( player.GetMaxHealth() ) ), null, null, { scriptType = DF_BYPASS_SHIELD | DF_DOOMED_HEALTH_LOSS, damageSourceId = eDamageSourceId.deathField } )
             }
         }
@@ -594,8 +589,8 @@ vector function GetClosestEnemyToOrigin(vector origin, int ourTeam)
 
 void function TpPlayerToSpawnPoint(entity player)
 {
-    
-    LocPair loc = _GetAppropriateSpawnLocation(player)
+	
+	LocPair loc = _GetAppropriateSpawnLocation(player)
 
     player.SetOrigin(loc.origin)
     player.SetAngles(loc.angles)
