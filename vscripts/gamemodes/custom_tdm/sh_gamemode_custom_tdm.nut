@@ -93,7 +93,60 @@ void function Sh_CustomTDM_Init()
 
 	case "mp_rr_canyonlands_mu1":
 	case "mp_rr_canyonlands_mu1_night":
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     case "mp_rr_canyonlands_64k_x_64k":
+
+
+        Shared_RegisterLocation(
+            NewLocationSettings(
+                "Swamps",
+                [
+
+                      NewLocPair(<35757, 3256, 3290>, <0, -90, 0>),
+                      NewLocPair(<36422, 3109, 3294>, <0, -165, 0>),
+                      NewLocPair(<34965, 1718, 3529>, <0, 45, 0>),
+                      NewLocPair(<32654, -1552, 3228>, <0, -90, 0>),
+                      NewLocPair(<32370, -2340, 3096>, <0, -90, 0>),
+                      NewLocPair(<34958, 4355, 3068>, <0, -90, 0>),
+                      NewLocPair(<36966, 4771, 3037>, <0, -180, 0>),
+                      NewLocPair(<37065, 3392, 2875>, <0, -45, 0>),
+
+                ], 
+                <0, 0, 3000>
+
+            )
+
+        )
+
+
+        Shared_RegisterLocation(
+            NewLocationSettings(
+                "Repulsor",
+                [
+                      NewLocPair(<26036, -17590, 5694>, <0, 90, 0>),
+                      NewLocPair(<26670, -16729, 4926>, <0, -180, 0>),
+                      NewLocPair(<27784, -16166, 5046>, <0, -180, 0>),
+                      NewLocPair(<27133, -16074, 5414>, <0, -90, 0>),
+                      NewLocPair(<27051, -14200, 5582>, <0, -90, 0>),
+                      NewLocPair(<28510, -12445, 4799>, <0, 0, 0>),
+                      NewLocPair(<25210, -12763, 4799>, <0, -180, 0>),
+                      NewLocPair(<23851, -12977, 5319>, <0, 0, 0>),
+                      NewLocPair(<22379, -14284, 4506>, <0, 0, 0>),
+                      NewLocPair(<22674, -16299, 5002>, <0, 0, 0>),
+                      NewLocPair(<23969, -17113, 4862>, <0, 0, 0>),
+                      NewLocPair(<24903, -15239, 4957>, <0, -90, 0>),
+
+                ], 
+                <0, 0, 3000>
+
+            )
+
+        )
+
+
         Shared_RegisterLocation(
             NewLocationSettings(
                 "Interstellar Relay",
@@ -131,6 +184,10 @@ void function Sh_CustomTDM_Init()
                 <0, 0, 3000>
             )
         )
+
+
+
+
 
         Shared_RegisterLocation(
             NewLocationSettings(
@@ -335,6 +392,7 @@ void function Sh_CustomTDM_Init()
                     <0, 0, 6500>
                 )
             )
+<<<<<<< Updated upstream
 
             
             Shared_RegisterLocation(
@@ -359,6 +417,50 @@ void function Sh_CustomTDM_Init()
                     <0, 0, 3000>
                 )
             )
+=======
+
+
+            // TOO SMALL FOR 18
+			
+            // Shared_RegisterLocation(
+            //     NewLocationSettings(
+            //         "Geyser Cave",
+            //         [
+            //             NewLocPair(<26330, -3506, -3933>, <8, -177, 0>),
+            //             NewLocPair(<24159, -4296, -3915>, <-2.5, 92, 0>),
+            //             NewLocPair(<22322, -3326, -3920>, <0, 0, 0>),
+            //             NewLocPair(<24199, -2370, -3914>, <0, -90, 0>)
+            //         ],
+            //         <0, 0, 250>
+            //     )
+            // )
+
+            
+            // NOT GOOD IMO
+
+            // Shared_RegisterLocation(
+            //     NewLocationSettings(
+            //         "Banana",
+            //         [
+            //             NewLocPair(<9213, -22942, -3571>, <0, -120, 0>),
+            //             NewLocPair(<7825, -24577, -3547>, <0, -165, 0>),
+            //             NewLocPair(<5846, -25513, -3523>, <0, 180, 0>),
+            //             NewLocPair(<4422, -25937, -3571>, <0, 90, 0>),
+            //             NewLocPair(<4056, -25017, -3571>, <0, -170, 0>),
+            //             NewLocPair(<1970, -25267, -3627>, <-5, 45, 0>),
+            //             NewLocPair(<2068, -25171, -3318>, <15, 45, 0>),
+            //             NewLocPair(<2197, -22687, -3572>, <-3, -90, 0>),
+            //             NewLocPair(<7081, -23051, -3667>, <0, 45, 0>),
+            //             NewLocPair(<8922, -22135, -3119>, <0, 180, 0>),
+            //             NewLocPair(<5436, -22436, -3188>, <0, 90, 0>),
+            //             NewLocPair(<4254, -23031, -3522>, <0, 45, 0>),
+            //             NewLocPair(<8211, -21413, -3667>, <0, -140, 0>),
+            //             NewLocPair(<4277, -24101, -3571>, <0, -60, 0>)
+            //         ],
+            //         <0, 0, 3000>
+            //     )
+            // )
+>>>>>>> Stashed changes
 
 
             Shared_RegisterLocation(
@@ -445,6 +547,22 @@ void function Sh_CustomTDM_Init()
                     <0, 0, 3000>
                 )
             )
+<<<<<<< Updated upstream
+=======
+			
+            Shared_RegisterLocation(
+                NewLocationSettings(
+                    "The Dome",
+                    [
+                        NewLocPair(<17445.83, -36838.45, -2160.64>, <-2.20, -37.85, 0>),
+						NewLocPair(<17405.53, -39860.60, -2248>, <-6, -52, 0>),
+                        NewLocPair(<21700.48, -40169, -2164.30>, <2, 142, 0>),
+						NewLocPair(<20375.39, -36068.25, -2248>, <-1, -128, 0>)
+                    ],
+                    <0, 0, 2850>
+                )
+            )
+>>>>>>> Stashed changes
 
         
         default:
@@ -493,8 +611,8 @@ void function Shared_RegisterLocation(LocationSettings locationSettings)
 
 // Playlist GET
 
-float function Deathmatch_GetIntroCutsceneNumSpawns()                { return GetCurrentPlaylistVarFloat("intro_cutscene_num_spawns", 5)}
-float function Deathmatch_GetIntroCutsceneSpawnDuration()            { return GetCurrentPlaylistVarFloat("intro_cutscene_spawn_duration", 5)}
+float function Deathmatch_GetIntroCutsceneNumSpawns()                { return GetCurrentPlaylistVarFloat("intro_cutscene_num_spawns", 4)}
+float function Deathmatch_GetIntroCutsceneSpawnDuration()            { return GetCurrentPlaylistVarFloat("intro_cutscene_spawn_duration", 4)}
 float function Deathmatch_GetIntroSpawnSpeed()                       { return GetCurrentPlaylistVarFloat("intro_cutscene_spawn_speed", 40)}
 bool function Spectator_GetReplayIsEnabled()                         { return GetCurrentPlaylistVarBool("replay_enabled", false ) } 
 float function Spectator_GetReplayDelay()                            { return GetCurrentPlaylistVarFloat("replay_delay", 5 ) } 
@@ -502,7 +620,7 @@ float function Deathmatch_GetRespawnDelay()                          { return Ge
 float function Equipment_GetDefaultShieldHP()                        { return GetCurrentPlaylistVarFloat("default_shield_hp", 100) }
 float function Deathmatch_GetOOBDamagePercent()                      { return GetCurrentPlaylistVarFloat("oob_damage_percent", 25) }
 float function Deathmatch_GetVotingTime()                            { return GetCurrentPlaylistVarFloat("voting_time", 5) }
-bool function CMD_GetTGiveEnabled()                                  { return GetCurrentPlaylistVarBool("tgive_enabled", true) }
+bool function CMD_GetTGiveEnabled()                                  { return GetCurrentPlaylistVarBool("tgive_enabled", false) }
       
 #if SERVER      
 bool function Equipment_GetRespawnKitEnabled()                       { return GetCurrentPlaylistVarBool("respawn_kit_enabled", false) }

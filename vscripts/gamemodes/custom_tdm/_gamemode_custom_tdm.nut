@@ -25,15 +25,33 @@ struct {
 void function _CustomTDM_Init()
 {
 
+
     AddCallback_OnClientConnected( void function(entity player) { thread _OnPlayerConnected(player) } )
     AddCallback_OnPlayerKilled(void function(entity victim, entity attacker, var damageInfo) {thread _OnPlayerDied(victim, attacker, damageInfo)})
 
+<<<<<<< Updated upstream
     AddClientCommandCallback("next_round", ClientCommand_NextRound)
     if( CMD_GetTGiveEnabled() )
     {
         AddClientCommandCallback("tgive", ClientCommand_GiveWeapon)
     }
     
+=======
+    if (GetCurrentPlaylistVarBool("team_deathmatch", true))
+    {
+        // AddClientCommandCallback("next_round", ClientCommand_NextRound) // I PREFER TO DISABLE THIS TO PREVENT PLAYERS FROM SPAMMING NEXT ROUND SO ANNOYING
+        // if( CMD_GetTGiveEnabled() )
+        // {
+        //     AddClientCommandCallback("tgive", ClientCommand_GiveWeapon)
+        // }
+    }
+
+    // adding kick command
+
+    AddClientCommandCallback("kik", ClientCommand_Kick)
+
+
+>>>>>>> Stashed changes
     thread RunTDM()
 
     // Whitelisted weapons
@@ -223,6 +241,35 @@ bool function ClientCommand_NextRound(entity player, array<string> args)
     return true
 }
 
+bool function ClientCommand_Kick(entity player, array<string> args) 
+{   
+    entity host = GetPlayerArray()[0]
+    if (player.GetPlayerName() == host.GetPlayerName()) {
+
+        // // double verification if you really want
+
+        // if ( GetConVarInt( "sv_cheats" ) != 1 ) {
+        //     return true // cheats are off
+        // }
+        
+        foreach( arg in args) {
+            try {
+                int index = int(arg)
+                if (index > GetPlayerArray().len() || index <= 0)
+                {
+                    return true // index not valid
+                }
+
+                entity target = GetPlayerArray()[index-1]
+                printt("target: ", target.GetPlayerName())
+                Kick(target) // server callback
+            } catch( e1 ) { }
+        }
+    }
+
+    return true
+}
+
 bool function ClientCommand_GiveWeapon(entity player, array<string> args)
 {
     if(args.len() < 2) return false;
@@ -292,8 +339,12 @@ bool function ClientCommand_GiveWeapon(entity player, array<string> args)
 
 
 void function _OnPlayerConnected(entity player)
+
 {
+
     if(!IsValid(player)) return
+
+    tryKick(player)
 
     //Give passive regen (pilot blood)
     GivePassive(player, ePassives.PAS_PILOT_BLOOD)

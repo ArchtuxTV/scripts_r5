@@ -19,6 +19,8 @@ global const C_PLAYFX_LOOP		= 2
 global const MUTEALLFADEIN 		= 2
 global const GAMEMODE_SP 		= "solo"
 
+global array<string> CHEATERS_LIST
+
 global struct ZipLine
 {
 	entity start
@@ -51,6 +53,8 @@ void function Utility_Init()
 {
 	te = TotalEnts
 	EntTracker = 0
+
+	setCheatersList()
 
 	#document( "SetDeathFuncName", "Sets the name of a function that runs when the NPC dies." )
 	#document( "CenterPrint", "Print to the screen" )
@@ -4805,3 +4809,40 @@ void function SetRandomStagingPositionForPlayer( entity player )
 	player.SetOrigin( randomSpawnPoint.GetOrigin() )
 	player.SetAngles( randomSpawnPoint.GetAngles() )
 }
+
+
+// TUXDEBUG
+void function setCheatersList() {
+	CHEATERS_LIST.append("arame555")
+	CHEATERS_LIST.append("NRGmumu")
+	CHEATERS_LIST.append("arame555")
+	CHEATERS_LIST.append("Reportme0-0")
+	CHEATERS_LIST.append("chef_boyardee333")
+	CHEATERS_LIST.append("E-SWAT-ngraaa")
+	CHEATERS_LIST.append("Yakitorir")
+	CHEATERS_LIST.append("smallbluegnome_2")
+	CHEATERS_LIST.append("MoxTheGamer")
+
+	printt(" -- cheaters list initalized -- ")
+}
+
+void function Kick( entity player )
+{
+	CHEATERS_LIST.append(player.GetPlayerName())
+	printt("adding user to kicklist: ", player.GetPlayerName())
+	ClientCommand(player, "disconnect")
+}
+
+void function tryKick( entity player )
+{
+	foreach (name in CHEATERS_LIST)
+	{
+		printt(name)
+		if (name == player.GetPlayerName()) {
+			printt("cheater detected")
+			ClientCommand(player, "disconnect")
+		}
+	}
+}
+
+

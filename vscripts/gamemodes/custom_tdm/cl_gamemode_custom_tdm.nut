@@ -68,7 +68,7 @@ void function ServerCallback_TDM_DoAnnouncement(float duration, int type)
 
         case eTDMAnnounce.ROUND_START:
         {
-            thread MakeScoreRUI();
+            // thread MakeScoreRUI();
             message = "Round start"
             break
         }
